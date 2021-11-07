@@ -22,7 +22,7 @@ int main()
   long result2 = worker2.get();
 
   std::cout
-    << "Fibonnacy worker 1 = " << result1
+    << "Fibonacci worker 1 = " << result1
     << ", workder 2 = " << result2
     << std::endl;
 

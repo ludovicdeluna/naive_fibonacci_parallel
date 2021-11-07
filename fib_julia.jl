@@ -24,5 +24,5 @@ worker2 = Threads.@spawn run_fib(input, "Worker 2")
 result1 = fetch(worker1)
 result2 = fetch(worker2)
 
-println("Fibonnacy worker 1 = $(result1), worker 2 = $(result2)")
+println("Fibonacci worker 1 = $(result1), worker 2 = $(result2)")
 println("Program done. Exit.")

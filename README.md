@@ -30,7 +30,7 @@ Questions for me was:
 The resulting algorithm use 2 threads for computation + 1 main thread to
 synchronize the result at display.
 
-Results with a Fibonnacci of **50**:
+Results with a Fibonacci of **50**:
 
 ## C++ ~ 30 seconds
 
@@ -43,7 +43,7 @@ Results with a Fibonnacci of **50**:
     Worker 2 started!
     Worker 2 finished!
     Worker 1 finished!
-    Fibonnacy worker 1 = 20365011074, workder 2 = 20365011074
+    Fibonacci worker 1 = 20365011074, workder 2 = 20365011074
     Program done. Exit.
 
     real	0m30,774s
@@ -52,6 +52,8 @@ Results with a Fibonnacci of **50**:
 
 
 ## Go ~ 50 seconds
+
+  ([source](./fib_go.go))
 
     go build fib_go.go
 
@@ -69,13 +71,15 @@ Results with a Fibonnacci of **50**:
 
 ## Julia ~ 55 seconds
 
+  ([source](./fib_julia.jl))
+
     time julia -t2 fib_julia.jl
     Started with 2 threads
     Worker 1 started!
     Worker 2 started!
     Worker 2 finished!
     Worker 1 finished!
-    Fibonnacy worker 1 = 20365011074, worker 2 = 20365011074
+    Fibonacci worker 1 = 20365011074, worker 2 = 20365011074
     Program done. Exit.
 
     real	0m54,917s
@@ -84,6 +88,9 @@ Results with a Fibonnacci of **50**:
 
 
 ## C# ~ 57 seconds
+
+  ([source](./Program.cs))
+
     dotnet build -c Release
 
     time dotnet bin/Release/net5.0/async_fib.dll
@@ -101,6 +108,8 @@ Results with a Fibonnacci of **50**:
 
 ## Elixir ~ 2 minutes
 
+  ([source](./fib_elixir.exs))
+
     time elixir fib_elixir.exs
     worker_1 started!
     worker_2 started!
@@ -115,6 +124,8 @@ Results with a Fibonnacci of **50**:
 
 
 ## Ruby ~ 16 minutes
+
+  ([source](./fib_ruby.rb))
 
     time ruby fib_ruby.rb
     Worker 1 started!
