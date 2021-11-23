@@ -123,7 +123,7 @@ Results with a Fibonacci of **50**:
     sys	0m0,070s
 
 
-## Ruby ~ 16 minutes
+## Ruby ~ 16 minutes (JIT disabled)
 
   ([source](./fib_ruby.rb))
 
@@ -182,4 +182,37 @@ async/await with the purpose of "Task" class for a time.
 I wanted to write a NodeJS version, but the tool is definitely not designed for
 such a task. The way it perform CPU bound processing recall me how Ruby work on
 this area... Badly. For I/O bound, this is the opposite: NodeJS can do a
-wonderful work. But it's not what I experiment today.
+wonderful work. But it's not what I experiment today. For just my asking on
+performance, the result with one thread:
+
+### Javascript v8 ~ 2 minutes
+
+NodeJS 16.10 on Linux.
+
+  ([source](./fib_javascript.js))
+
+    time node fib_javascript.js
+    Fibonacci:  20365011074
+
+    real	2m10,367s
+    user	2m10,367s
+    sys	0m0,004s
+
+### Javascript v8 ~ 20 minutes (JIT disabled)
+
+This result of Javascript is in the middle of intepreted programming language
+having JIT support. What happen if I disable the JIT of NodeJS? (possible since
+2019 to open v8 on TVs)
+
+    time node --jitless fib_javascript.js
+
+    Warning: disabling flag --expose_wasm due to conflicting flags
+    Warning: disabling flag --regexp_tier_up due to conflicting flags
+
+    Fibonacci:  20365011074
+
+    real	19m53,465s
+    user	19m53,481s
+    sys	0m0,008s
+
+This last test is perhaps not really faire.
