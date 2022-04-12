@@ -8,6 +8,7 @@ you should get with a first implementation on programming languages:
 - Go (1.17)
 - Julia (1.6.x)
 - C# (.Net5 on Mono)
+- Dart (2.15 with JIT VM and with AOT)
 - Elixir 1.12 (with JIT)
 - Ruby (3.x with Ractors instead of Ruby Threads)
 
@@ -104,6 +105,37 @@ Results with a Fibonacci of **50**:
     real	0m57,534s
     user	1m54,684s
     sys	0m0,016s
+
+
+## Dart ~ 1 minute
+
+  ([source](./async_fib.dart))
+
+    time dart run async_fib.dart
+    Worker 1 started!
+    Worker 2 started!
+    Worker 1 finished!
+    Worker 2 finished!
+    Result Worker 1 = 20365011074, Worker 2 = 20365011074
+    Program done. Exit.
+
+    real	0m49,566s
+    user	1m38,920s
+    sys	0m0,099s
+
+
+    dart compile exe async_fib.dart -o async_fib
+    time ./async_fib
+    Worker 1 started!
+    Worker 2 started!
+    Worker 2 finished!
+    Worker 1 finished!
+    Result Worker 1 = 20365011074, Worker 2 = 20365011074
+    Program done. Exit.
+
+    real	1m13,390s
+    user	2m26,310s
+    sys	0m0,036s
 
 
 ## Elixir ~ 2 minutes
