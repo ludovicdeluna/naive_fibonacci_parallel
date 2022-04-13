@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:isolate';
 
-void main(List<String> args) async {
-  final Future<int> result1 = run_fib(1, 50, ReceivePort());
-  final Future<int> result2 = run_fib(2, 50, ReceivePort());
+Future<void> main(List<String> args) async {
+  final Future<int> result1 = run_fib(1, 50);
+  final Future<int> result2 = run_fib(2, 50);
 
   print("Result Worker 1 = ${await result1}, Worker 2 = ${await result2}");
   print("Program done. Exit.");
@@ -12,20 +12,22 @@ void main(List<String> args) async {
 class FibParameters {
   int name;
   int n;
-  SendPort channel;
+  SendPort messagesIn;
 
-  FibParameters(this.name, this.n, this.channel);
+  FibParameters(this.name, this.n, this.messagesIn);
 }
 
-Future<int> run_fib(int name, int n, ReceivePort worker) async {
+Future<int> run_fib(int name, int n) async {
+  final messagesOut = ReceivePort();
+
   await Isolate.spawn((FibParameters params) {
     print("Worker ${params.name} started!");
     int result = fib(params.n);
     print("Worker ${params.name} finished!");
-    Isolate.exit(params.channel, result);
-  }, FibParameters(name, n, worker.sendPort));
+    Isolate.exit(params.messagesIn, result);
+  }, FibParameters(name, n, messagesOut.sendPort));
 
-  return await worker.first as int;
+  return await messagesOut.first as int;
 }
 
 int fib(int n) {
