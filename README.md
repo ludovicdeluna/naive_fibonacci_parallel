@@ -114,28 +114,30 @@ Results with a Fibonacci of **50**:
     time dart run async_fib.dart
     Worker 1 started!
     Worker 2 started!
-    Worker 1 finished!
+    Main body completed. Waiting from Reactor now
     Worker 2 finished!
+    Worker 1 finished!
     Result Worker 1 = 20365011074, Worker 2 = 20365011074
     Program done. Exit.
 
-    real	0m49,566s
-    user	1m38,920s
-    sys	0m0,099s
+    real    0m49,162s
+    user    1m37,809s
+    sys     0m0,083s
 
 
     dart compile exe async_fib.dart -o async_fib
     time ./async_fib
-    Worker 1 started!
+    Main body completed. Waiting from Reactor now
     Worker 2 started!
+    Worker 1 started!
     Worker 2 finished!
     Worker 1 finished!
     Result Worker 1 = 20365011074, Worker 2 = 20365011074
     Program done. Exit.
 
-    real	1m13,390s
-    user	2m26,310s
-    sys	0m0,036s
+    real    1m12,941s
+    user    2m25,288s
+    sys     0m0,012s
 
 
 ## Elixir ~ 2 minutes
