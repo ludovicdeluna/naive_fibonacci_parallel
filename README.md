@@ -52,6 +52,26 @@ Results with a Fibonacci of **50**:
     sys	0m0,004s
 
 
+## Dart VM with JIT ~ 49 seconds
+
+  ([source](./async_fib.dart))
+
+  > This code can run with AOT (see bellow)
+
+    time dart run async_fib.dart
+    Worker 1 started!
+    Worker 2 started!
+    Main body completed. Waiting from Reactor now
+    Worker 2 finished!
+    Worker 1 finished!
+    Result Worker 1 = 20365011074, Worker 2 = 20365011074
+    Program done. Exit.
+
+    real    0m49,162s
+    user    1m37,809s
+    sys     0m0,083s
+
+
 ## Go ~ 50 seconds
 
   ([source](./fib_go.go))
@@ -107,23 +127,11 @@ Results with a Fibonacci of **50**:
     sys	0m0,016s
 
 
-## Dart ~ 1 minute
+## Dart AOT ~ 1 minute
+
+  > Same code as above, but with AOT compilation.
 
   ([source](./async_fib.dart))
-
-    time dart run async_fib.dart
-    Worker 1 started!
-    Worker 2 started!
-    Main body completed. Waiting from Reactor now
-    Worker 2 finished!
-    Worker 1 finished!
-    Result Worker 1 = 20365011074, Worker 2 = 20365011074
-    Program done. Exit.
-
-    real    0m49,162s
-    user    1m37,809s
-    sys     0m0,083s
-
 
     dart compile exe async_fib.dart -o async_fib
     time ./async_fib
@@ -140,7 +148,7 @@ Results with a Fibonacci of **50**:
     sys     0m0,012s
 
 
-## Elixir ~ 2 minutes
+## Elixir with JIT ~ 2 minutes
 
   ([source](./fib_elixir.exs))
 
