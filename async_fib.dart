@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:isolate';
 
 class FibParameters {
-  int name;
-  int n;
-  SendPort messagesIn;
+  final int name;
+  final int n;
+  final SendPort messagesIn;
 
-  FibParameters(this.name, this.n, this.messagesIn);
+  const FibParameters(this.name, this.n, this.messagesIn);
 }
 
 void main(List<String> args) {
