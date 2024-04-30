@@ -5,6 +5,7 @@ with a naive and unoptimized approach (**recursive call**) that simulate what
 you should get with a first implementation on programming languages:
 
 - C++
+- Java (OpenJdk 21.0.2)
 - Go (1.17)
 - Julia (1.6.x)
 - C# (.Net5 on Mono)
@@ -51,6 +52,22 @@ Results with a Fibonacci of **50**:
     user	1m1,535s
     sys	0m0,004s
 
+## Java ~ 44 seconds
+
+([source](./FibJava.java))
+
+    javac FibJava.java
+    time java FibJava
+
+    worker 1 started!
+    worker 2 started!
+    Result worker 1: 20365011074
+    Result worker 2: 20365011074
+    Program done. Exit.
+
+    real    0m44,849s
+    user    1m29,585s
+    sys     0m0,024s
 
 ## Dart VM with JIT ~ 49 seconds
 
