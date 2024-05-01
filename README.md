@@ -1,4 +1,4 @@
-# Unoptimized Fibonacci, parallel work on 6 languages
+# Unoptimized Fibonacci, parallel work on 8 languages
 
 This test perform a **parallel work** through a simple model (**async/future**)
 with a naive and unoptimized approach (**recursive call**) that simulate what
@@ -13,7 +13,7 @@ you should get with a first implementation on programming languages:
 - Elixir 1.12 (with JIT)
 - Ruby (3.x with Ractors instead of Ruby Threads)
 
-3 dynamic languages (Julia, Elixir, Ruby) / 3 static languages (C++, Go, C#).
+3 dynamic languages (Julia, Elixir, Ruby) / 5 static languages (C++, Java, Dart, Go, C#).
 
 > Objective was: run in parallel 2 Fibonacci calculations with exact same inputs
 > and show the result on the screen.
@@ -65,9 +65,9 @@ Results with a Fibonacci of **50**:
     Result worker 2: 20365011074
     Program done. Exit.
 
-    real    0m44,849s
-    user    1m29,585s
-    sys     0m0,024s
+    real    0m43,794s
+    user    1m27,377s
+    sys     0m0,021s
 
 ## Dart VM with JIT ~ 49 seconds
 

@@ -35,6 +35,22 @@ class FibJava {
       System.exit(1);
     } // block call shutdown() on executor when finished
   }
+
+  static void thread_all(FibRunnable... runners) {
+    Thread[] threads = Arrays.stream(runners)
+        .map(runner -> new Thread(runner))
+        .peek(thread -> thread.start())
+        .toArray(Thread[]::new);
+
+    try {
+      for (var thread : threads) {
+        thread.join();
+      }
+    } catch (InterruptedException e) {
+      System.out.println("Workers interrupted");
+      System.exit(1);
+    }
+  }
 }
 
 class FibRunnable implements Runnable {
