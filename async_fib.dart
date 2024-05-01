@@ -19,8 +19,6 @@ void main(List<String> args) {
     print("Result Worker 1 = ${results[0]}, Worker 2 = ${results[1]}");
     print("Program done. Exit.");
   });
-
-  print("Main body completed. Waiting from Reactor now...");
 }
 
 Future<int> run_fib(int name, int n) async {

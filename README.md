@@ -78,7 +78,6 @@ Results with a Fibonacci of **50**:
     time dart run async_fib.dart
     Worker 1 started!
     Worker 2 started!
-    Main body completed. Waiting from Reactor now
     Worker 2 finished!
     Worker 1 finished!
     Result Worker 1 = 20365011074, Worker 2 = 20365011074
