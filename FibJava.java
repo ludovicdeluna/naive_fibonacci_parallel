@@ -19,7 +19,7 @@ class FibJava {
         Fibonacci runner = future.get();
         System.out.printf("Result %s: %d\n", runner.workerName, runner.result);
       }
-    } catch (InterruptedException | ExecutionException _e) {
+    } catch (InterruptedException | ExecutionException _getError) {
       System.out.println("Workers interrupted");
       System.exit(1);
     } // call shutdown() on executor when finished
@@ -28,11 +28,11 @@ class FibJava {
 }
 
 class Fibonacci {
-  final String workerName;
+  public final String workerName;
   public long result;
 
   Fibonacci(String name) {
-    this.workerName = name;
+    workerName = name;
   }
 
   Fibonacci run() {
