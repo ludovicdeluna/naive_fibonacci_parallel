@@ -7,14 +7,14 @@ class FibJava {
 
     try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
       var runners = new Fibonacci[] {
-        new Fibonacci("worker 1"),
-        new Fibonacci("worker 2")
+          new Fibonacci("worker 1"),
+          new Fibonacci("worker 2")
       };
 
-      futures = Arrays.stream(runners).map(runner -> {
-        return executor.submit(runner);
-      }).toList();
-    } // call shutdown() on executor when finished
+      futures = Arrays.stream(runners)
+          .map(runner -> executor.submit(runner))
+          .toList();
+    } // call shutdown() on the executor when this block has been processed
 
     try {
       for (var future : futures) {
@@ -25,6 +25,7 @@ class FibJava {
       System.out.println("Workers interrupted");
       System.exit(1);
     }
+
     System.out.println("Program done. Exit.");
   }
 }
@@ -40,6 +41,7 @@ class Fibonacci implements Callable<Fibonacci> {
   public Fibonacci call() {
     System.out.printf("%s started!\n", workerName);
     result = Fibonacci.fib(50L);
+
     return this;
   }
 
