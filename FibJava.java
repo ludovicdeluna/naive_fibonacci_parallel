@@ -12,7 +12,7 @@ class FibJava {
       };
 
       futures = Arrays.stream(runners).map(runner -> {
-        return executor.submit(() -> runner.run());
+        return executor.submit(runner);
       }).toList();
     } // call shutdown() on executor when finished
 
@@ -29,7 +29,7 @@ class FibJava {
   }
 }
 
-class Fibonacci {
+class Fibonacci implements Callable<Fibonacci> {
   public final String workerName;
   public long result;
 
@@ -37,7 +37,7 @@ class Fibonacci {
     workerName = name;
   }
 
-  Fibonacci run() {
+  public Fibonacci call() {
     System.out.printf("%s started!\n", workerName);
     result = Fibonacci.fib(50L);
     return this;
