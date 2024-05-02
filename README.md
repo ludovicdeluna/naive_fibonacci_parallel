@@ -59,15 +59,15 @@ Results with a Fibonacci of **50**:
     javac FibJava.java
     time java FibJava
 
-    worker 1 started!
     worker 2 started!
+    worker 1 started!
     Result worker 1: 20365011074
     Result worker 2: 20365011074
     Program done. Exit.
 
-    real    0m43,794s
-    user    1m27,377s
-    sys     0m0,021s
+    real    0m43,970s
+    user    1m27,834s
+    sys     0m0,040s
 
 ## Dart VM with JIT ~ 49 seconds
 

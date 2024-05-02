@@ -1,20 +1,22 @@
-import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
+import java.util.*;
+import java.util.concurrent.*;
 
 class FibJava {
   public static void main(String[] _args) {
-    var runners = new Fibonacci[] {
-      new Fibonacci("worker 1"),
-      new Fibonacci("worker 2")
-    };
+    List<Future<Fibonacci>> futures;
 
-    final var executor = Executors.newVirtualThreadPerTaskExecutor();
-    try (executor) {
-      var futures = Arrays.stream(runners).map(runner -> {
+    try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+      var runners = new Fibonacci[] {
+        new Fibonacci("worker 1"),
+        new Fibonacci("worker 2")
+      };
+
+      futures = Arrays.stream(runners).map(runner -> {
         return executor.submit(() -> runner.run());
       }).toList();
+    } // call shutdown() on executor when finished
 
+    try {
       for (var future : futures) {
         Fibonacci runner = future.get();
         System.out.printf("Result %s: %d\n", runner.workerName, runner.result);
@@ -22,7 +24,7 @@ class FibJava {
     } catch (InterruptedException | ExecutionException _getError) {
       System.out.println("Workers interrupted");
       System.exit(1);
-    } // call shutdown() on executor when finished
+    }
     System.out.println("Program done. Exit.");
   }
 }
