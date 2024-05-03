@@ -8,7 +8,7 @@ you should get with a first implementation on programming languages:
 - Java (OpenJdk 21.0.2)
 - Go (1.17)
 - Julia (1.6.x)
-- C# (.Net5 on Mono)
+- C# (.Net8 on Mono)
 - Dart (2.15 with JIT VM and with AOT)
 - Elixir 1.12 (with JIT)
 - Ruby (3.x with Ractors instead of Ruby Threads)
@@ -51,6 +51,24 @@ Results with a Fibonacci of **50**:
     real	0m30,774s
     user	1m1,535s
     sys	0m0,004s
+
+## C# ~ 37 seconds
+
+  ([source](./Program.cs))
+
+    dotnet build -c Release
+    time dotnet bin/Release/net8.0/async_fib.dll
+
+    Worker 2 started!
+    Worker 1 started!
+    Worker 2 finished!
+    Worker 1 finished!
+    Fibonacci worker 1 = 20365011074, worker 2 = 20365011074
+    Program done. Exit.
+
+    real    0m37,702s
+    user    1m15,295s
+    sys     0m0,021s
 
 ## Java ~ 44 seconds
 
@@ -105,7 +123,6 @@ Results with a Fibonacci of **50**:
     user	1m41,356s
     sys	0m0,008s
 
-
 ## Julia ~ 55 seconds
 
   ([source](./fib_julia.jl))
@@ -122,26 +139,6 @@ Results with a Fibonacci of **50**:
     real	0m54,917s
     user	1m49,747s
     sys	0m0,581s
-
-
-## C# ~ 57 seconds
-
-  ([source](./Program.cs))
-
-    dotnet build -c Release
-
-    time dotnet bin/Release/net5.0/async_fib.dll
-    Worker 1 started!
-    Worker 2 started!
-    Worker 1 finished!
-    Worker 2 finished!
-    Fibonacci worker 1 = 20365011074, worker 2 = 20365011074
-    Program done. Exit.
-
-    real	0m57,534s
-    user	1m54,684s
-    sys	0m0,016s
-
 
 ## Dart AOT ~ 1 minute
 
@@ -162,7 +159,6 @@ Results with a Fibonacci of **50**:
     real    1m12,941s
     user    2m25,288s
     sys     0m0,012s
-
 
 ## Elixir with JIT ~ 2 minutes
 
