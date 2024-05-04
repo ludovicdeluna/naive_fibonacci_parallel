@@ -4,12 +4,12 @@ This test perform a **parallel work** through a simple model (**async/future**)
 with a naive and unoptimized approach (**recursive call**) that simulate what
 you should get with a first implementation on programming languages:
 
-- C++
+- C++ (gnu compiler g++ 11.4.0)
 - Java (OpenJdk 21.0.2)
 - Go (1.17)
 - Julia (1.6.x)
 - C# (.Net8 on Mono)
-- Dart (2.15 with JIT VM and with AOT)
+- Dart (3.3.4 with JIT VM and with AOT)
 - Elixir 1.12 (with JIT)
 - Ruby (3.x with Ractors instead of Ruby Threads)
 
@@ -34,13 +34,13 @@ synchronize the result at display.
 
 Results with a Fibonacci of **50**:
 
-## C++ ~ 30 seconds
+## C++ ~ 20 seconds
 
   ([source](./async_fib.cpp))
 
     g++ -O2 -pthread async_fib.cpp -o async_fib
-
     time ./async_fib
+
     Worker 1 started!
     Worker 2 started!
     Worker 2 finished!
@@ -48,9 +48,9 @@ Results with a Fibonacci of **50**:
     Fibonacci worker 1 = 20365011074, workder 2 = 20365011074
     Program done. Exit.
 
-    real	0m30,774s
-    user	1m1,535s
-    sys	0m0,004s
+    real    0m20,539s
+    user    0m41,053s
+    sys     0m0,004s
 
 ## C# ~ 37 seconds
 
@@ -94,17 +94,17 @@ Results with a Fibonacci of **50**:
   > This code can run with AOT (see bellow)
 
     time dart run async_fib.dart
+
     Worker 1 started!
     Worker 2 started!
-    Worker 2 finished!
     Worker 1 finished!
+    Worker 2 finished!
     Result Worker 1 = 20365011074, Worker 2 = 20365011074
     Program done. Exit.
 
-    real    0m49,162s
-    user    1m37,809s
-    sys     0m0,083s
-
+    real    0m49,387s
+    user    1m38,402s
+    sys     0m0,074s
 
 ## Go ~ 50 seconds
 
@@ -148,17 +148,17 @@ Results with a Fibonacci of **50**:
 
     dart compile exe async_fib.dart -o async_fib
     time ./async_fib
-    Main body completed. Waiting from Reactor now
-    Worker 2 started!
+
     Worker 1 started!
+    Worker 2 started!
     Worker 2 finished!
     Worker 1 finished!
     Result Worker 1 = 20365011074, Worker 2 = 20365011074
     Program done. Exit.
 
-    real    1m12,941s
-    user    2m25,288s
-    sys     0m0,012s
+    real    1m15,381s
+    user    2m30,728s
+    sys     0m0,016s
 
 ## Elixir with JIT ~ 2 minutes
 
