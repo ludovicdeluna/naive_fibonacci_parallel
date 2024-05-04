@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-class Program
+class AsyncFib
 {
     static void Main(string[] args)
     {
