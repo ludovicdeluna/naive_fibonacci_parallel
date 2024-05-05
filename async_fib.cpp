@@ -22,9 +22,9 @@ int main()
   long result2 = worker2.get();
 
   std::cout
-    << "Fibonacci worker 1 = " << result1
-    << ", workder 2 = " << result2
-    << std::endl;
+      << "Fibonacci worker 1 = " << result1
+      << ", workder 2 = " << result2
+      << std::endl;
 
   std::cout << "Program done. Exit." << std::endl;
   return 0;
@@ -32,11 +32,12 @@ int main()
 
 long fib(long n)
 {
-  if (n <= 1) {
+  if (n <= 1)
+  {
     return 1;
-  } else {
-    return fib(n-1) + fib(n-2);
   }
+
+  return fib(n - 1) + fib(n - 2);
 }
 
 long fibrun(int n, std::string name)
